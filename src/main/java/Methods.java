@@ -30,7 +30,7 @@ public class Methods {
 
     private String byteGetter(String path) throws IOException {
 
-        byte[] bytes = Files.readAllBytes(Paths.get(path));
+        byte[] bytes = Files.readAllBytes(Paths.get(filePath));
         StringBuilder builder =new StringBuilder();
 
         for(byte b : bytes){
@@ -45,7 +45,7 @@ public class Methods {
         File file = new File(filePath);
         extension = getFileExtension(filePath);
 
-        if(extension.equals(Important.gif) || extension.equals(Important.jpeg) || extension.equals(Important.jpg) || extension.equals(Important.txt)){
+        if(extension.equals("gif") || extension.equals("jpeg") || extension.equals("jpg") || extension.equals("txt")){
             docPath = "src\\main\\resources\\Important.csv";
         }
         else{
@@ -64,7 +64,7 @@ public class Methods {
                 for(int j = 2; j < temp.length; j++){
                     if(compare == true) break;
 
-                    for(int k = offset; k < temp[j].length(); j++){
+                    for(int k = offset; k < temp[j].length(); k++){
                         Character a = temp[j].charAt(k - offset);
                         Character b = bytes.charAt(k);
 

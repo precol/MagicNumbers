@@ -8,7 +8,8 @@ import java.util.ArrayList;
 
 public class Methods {
 
-    String extension;
+    private String extension;
+    private String filePath = "src\\main\\resources\\";
 
 
     public ArrayList reader() throws IOException {
@@ -38,6 +39,8 @@ public class Methods {
     }
 
     public boolean compareBytes(){
+        boolean compare = false;
+
 
     }
 
@@ -49,6 +52,14 @@ public class Methods {
             return extension;
         }
         else return "";
+    }
+
+    public void setPath(String path){
+        filePath = path;
+    }
+
+    public String getPath(){
+        return filePath;
     }
 
 }

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Methods {
 
     private String extension;
-    private String filePath = "src\\main\\resources\\";
+    private String filePath = "src\\main\\resources\\iggy.jpg";
 
 
     public ArrayList reader() throws IOException {
@@ -50,10 +50,25 @@ public class Methods {
 
             if(temp[0].equals(extension)){
                 int offset = Integer.parseInt(temp[1]);
+                String bytes = byteGetter(filePath);
 
+                for(int j = 2; j < temp.length; j++){
+                    if(compare == true) break;
+
+                    for(int k = offset; k < temp[j].length(); j++){
+                        Character a = temp[j].charAt(k - offset);
+                        Character b = bytes.charAt(k);
+
+                        if(a.equals(b)){
+                            if(temp[j].length() + offset -1 == k) compare = true;
+                        }
+                        else break;
+                    }
+                }
             }
         }
 
+        return compare;
     }
 
     public String getFileExtension(String path){

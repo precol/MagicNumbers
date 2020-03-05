@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -6,6 +7,9 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class Methods {
+
+    String extension;
+
 
     public ArrayList reader() throws IOException {
 
@@ -24,8 +28,7 @@ public class Methods {
 
     public String byteGetter(String path) throws IOException {
 
-        String filePath = path;
-        byte[] bytes = Files.readAllBytes(Paths.get(filePath));
+        byte[] bytes = Files.readAllBytes(Paths.get(path));
         StringBuilder builder =new StringBuilder();
 
         for(byte b : bytes){
@@ -38,8 +41,14 @@ public class Methods {
 
     }
 
-    public String getFileExtension(){
+    public String getFileExtension(String path){
 
+        if(path.lastIndexOf(".") != -1 && path.lastIndexOf(".") != 0){
+            System.out.println(path.substring(path.lastIndexOf(".") + 1));
+            extension = path.substring(path.lastIndexOf(".") + 1);
+            return extension;
+        }
+        else return "";
     }
 
 }

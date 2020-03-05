@@ -38,9 +38,21 @@ public class Methods {
         return builder.toString();
     }
 
-    public boolean compareBytes(){
-        boolean compare = false;
+    public boolean compareBytes() throws IOException {
 
+        boolean compare = false;
+        File file = new File(filePath);
+        extension = getFileExtension(filePath);
+        ArrayList<String[]> list = reader();
+
+        for(int i = 0; i < list.size(); i++){
+            String[] temp = list.get(i);
+
+            if(temp[0].equals(extension)){
+                int offset = Integer.parseInt(temp[1]);
+
+            }
+        }
 
     }
 

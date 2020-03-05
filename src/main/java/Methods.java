@@ -73,8 +73,10 @@ public class Methods {
                         }
                         else break;
                     }
+                    if(j == temp.length - 1 && compare == false) System.out.println(extension + " isn't a " + extension + " file.");
                 }
             }
+            if(i == list.size() - 1 && compare == false) System.out.println("Wrong file extension");
         }
 
         return compare;

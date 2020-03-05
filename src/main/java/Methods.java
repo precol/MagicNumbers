@@ -1,3 +1,6 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class Methods {
@@ -6,8 +9,15 @@ public class Methods {
 
     }
 
-    public String byteGetter(){
+    public String byteGetter(String path) throws IOException {
+        String filePath = path;
+        byte[] bytes = Files.readAllBytes(Paths.get(filePath));
+        StringBuilder builder =new StringBuilder();
 
+        for(byte b : bytes){
+            builder.append(String.format("%02X",b));
+        }
+        return builder.toString();
     }
 
     public boolean compareBytes(){

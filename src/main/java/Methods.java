@@ -10,14 +10,15 @@ public class Methods {
 
     private String extension;
     private String filePath = "src\\main\\resources\\iggy.jpg";
+    private String docPath;
 
 
-    public ArrayList reader() throws IOException {
+    private ArrayList reader(String docPath) throws IOException {
 
         ArrayList<String[]> list = new ArrayList<>();
         String line = "";
         String[] toList;
-        BufferedReader bReader = new BufferedReader(new FileReader());
+        BufferedReader bReader = new BufferedReader(new FileReader(docPath));
 
         while((line = bReader.readLine()) != null){
             toList =line.split(";");
@@ -27,7 +28,7 @@ public class Methods {
         return list;
     }
 
-    public String byteGetter(String path) throws IOException {
+    private String byteGetter(String path) throws IOException {
 
         byte[] bytes = Files.readAllBytes(Paths.get(path));
         StringBuilder builder =new StringBuilder();
@@ -43,7 +44,15 @@ public class Methods {
         boolean compare = false;
         File file = new File(filePath);
         extension = getFileExtension(filePath);
-        ArrayList<String[]> list = reader();
+
+        if(extension.equals(Important.gif) || extension.equals(Important.jpeg) || extension.equals(Important.jpg) || extension.equals(Important.txt)){
+            docPath = "src\\main\\resources\\Important.csv";
+        }
+        else{
+            docPath = "src\\main\\resources\\Zeszyt1.csv";
+        }
+
+        ArrayList<String[]> list = reader(docPath);
 
         for(int i = 0; i < list.size(); i++){
             String[] temp = list.get(i);
@@ -71,8 +80,8 @@ public class Methods {
         return compare;
     }
 
-    public String getFileExtension(String path){
-
+    private String getFileExtension(String filePath){
+        String path = filePath;
         if(path.lastIndexOf(".") != -1 && path.lastIndexOf(".") != 0){
             System.out.println(path.substring(path.lastIndexOf(".") + 1));
             extension = path.substring(path.lastIndexOf(".") + 1);

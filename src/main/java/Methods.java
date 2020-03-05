@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Methods {
 
     private String extension;
-    private String filePath = "src\\main\\resources\\iggy.jpg";
+    private String filePath = "src\\main\\resources\\doc.txt";
     private String docPath;
 
 
@@ -42,7 +42,6 @@ public class Methods {
     public boolean compareBytes() throws IOException {
 
         boolean compare = false;
-        File file = new File(filePath);
         extension = getFileExtension(filePath);
 
         if(extension.equals("gif") || extension.equals("jpeg") || extension.equals("jpg") || extension.equals("txt")){

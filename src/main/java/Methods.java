@@ -8,11 +8,11 @@ import java.util.ArrayList;
 public class Methods {
 
     private String extension;
-    private String filePath = "src\\main\\resources\\doc.txt";
+    private String filePath = "src\\main\\resources\\iggy.jpg";
     private String docPath;
 
 
-    private ArrayList reader(String docPath) throws IOException {
+    private ArrayList<String[]> reader(String docPath) throws IOException {
 
         ArrayList<String[]> list = new ArrayList<>();
         String line = "";
@@ -76,6 +76,7 @@ public class Methods {
             }
             if(i == list.size() - 1 && compare == false) System.out.println("Wrong file extension");
         }
+        if(compare == true) System.out.println("Plik " + extension + " jest plikiem " + extension);
 
         return compare;
     }

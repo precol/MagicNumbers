@@ -1,14 +1,17 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Methods {
 
     private String extension;
-    private String filePath = "src\\main\\resources\\iggy.jpg";
+    private String filePath;
     private String docPath;
 
 
@@ -27,7 +30,7 @@ public class Methods {
         return list;
     }
 
-    private String byteGetter(String path) throws IOException {
+    private String byteGetter() throws IOException {
 
         byte[] bytes = Files.readAllBytes(Paths.get(filePath));
         StringBuilder builder =new StringBuilder();
@@ -40,6 +43,7 @@ public class Methods {
 
     public boolean compareBytes() throws IOException {
 
+        setPath();
         boolean compare = false;
         extension = getFileExtension(filePath);
 
@@ -57,7 +61,7 @@ public class Methods {
 
             if(temp[0].equals(extension)){
                 int offset = Integer.parseInt(temp[1]);
-                String bytes = byteGetter(filePath);
+                String bytes = byteGetter();
 
                 for(int j = 2; j < temp.length; j++){
                     if(compare == true) break;
@@ -76,7 +80,7 @@ public class Methods {
             }
             if(i == list.size() - 1 && compare == false) System.out.println("Wrong file extension");
         }
-        if(compare == true) System.out.println("Plik " + extension + " jest plikiem " + extension);
+        if(compare == true) System.out.println("File " + extension + " is a " + extension + " file.");
 
         return compare;
     }
@@ -91,8 +95,12 @@ public class Methods {
         else return "";
     }
 
-    public void setPath(String path){
-        filePath = path;
+    public void setPath(){
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Set set path to the file you wish to check.");
+        filePath = scanner.next();
+
     }
 
     public String getPath(){

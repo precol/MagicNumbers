@@ -17,7 +17,7 @@ public class Methods {
 
     private ArrayList<String[]> reader(String docPath) throws IOException {
 
-        ArrayList<String[]> list = new ArrayList<>();
+        ArrayList<String[]> list = new ArrayList<String[]>();
         String line = "";
         String[] toList;
         BufferedReader bReader = new BufferedReader(new FileReader(docPath));
@@ -42,6 +42,7 @@ public class Methods {
     }
 
     public boolean compareBytes() throws IOException {
+
 
         setPath();
         boolean compare = false;
@@ -103,8 +104,5 @@ public class Methods {
 
     }
 
-    public String getPath(){
-        return filePath;
-    }
 
 }

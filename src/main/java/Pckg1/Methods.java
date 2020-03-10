@@ -1,9 +1,7 @@
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -21,7 +19,7 @@ public class Methods {
         String[] toList;
         BufferedReader bReader = new BufferedReader(new FileReader(docPath));
         while((line = bReader.readLine()) != null){
-            
+
             toList =line.split(";");
             list.add(toList);
         }
@@ -42,6 +40,7 @@ public class Methods {
     public boolean mainComparator() throws IOException {
         setPath();
         extension = getFileExtension(filePath);
+
         if(extension.equals("gif") || extension.equals("jpeg") || extension.equals("jpg") || extension.equals("txt")){
             docPath = "src\\main\\resources\\Important.csv";
         }
@@ -74,6 +73,7 @@ public class Methods {
 
     private boolean comparator(ArrayList<String[]> list) throws IOException {
         boolean compare = false;
+        boolean output = false;
 
         for(int i = 0; i < list.size(); i++){
 
@@ -96,17 +96,19 @@ public class Methods {
                         else break;
                     }
 
-                    if(j == temp.length - 1 && compare == false) System.out.println(extension + " isn't a " + extension + " file.");
+                    if(j == temp.length - 1 && compare == false) {
+                        output = true;
+                        System.out.println(extension + " isn't a " + extension + " file.");
+                    }
                 }
             }
 
-            if(i == list.size() - 1 && compare == false) System.out.println("Wrong file extension");
+            if(i == list.size() - 1 && compare == false && output == false) System.out.println("Wrong file extension");
         }
 
         if(compare == true) System.out.println("File " + extension + " is a " + extension + " file.");
 
         return compare;
     }
-
 
 }

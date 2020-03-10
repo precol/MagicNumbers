@@ -1,3 +1,5 @@
+package Pckg1;
+
 import java.io.IOException;
 
 public class Main {

@@ -13,7 +13,7 @@
     </properties>
 
     <build>
-        <defaultGoal>install</defaultGoal>
+        <defaultGoal>compile</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -24,8 +24,21 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.4.0</version>
+                <configuration>
+                    <mainClass>Pckg1.Main</mainClass>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+
+    <dependencies>
+
+    </dependencies>
 
 
 </project>
